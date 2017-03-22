@@ -1,5 +1,5 @@
 /*
- * domnom 0.1.0
+ * domnom 0.2.0
  * A limited collection of JavaScript DOM prototype extensions.
  * https://github.com/ohdeerdog/domnom
  * https://npmjs.com/package/domnom
@@ -47,7 +47,10 @@
    * @function addEventListener
    * @override
    * 
-   * @description Allows adding the same event listener to a single event target for multiple event types at once. Overrides {@link https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener|EventTarget.addEventListener}.
+   * @description
+   * - allows adding the same listener for multiple event types in a single call
+   * - allows chaining multiple calls
+   * - *overrides {@link https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener|EventTarget.addEventListener}*
    * 
    * @param {...string} type One or more strings representing the event types to listen for.
    * @param {function} listener
@@ -62,6 +65,13 @@
    * 
    * @example
    * xhr.addEventListener('error', 'abort', interruption_handler);
+   *
+   * @example
+   * element
+   *   .addEventListener('keyup', keyup_handler)
+   *   .addEventListener('keydown', keydown_handler);
+   *
+   * @returns {EventTarget}
    */
 
   EventTarget.prototype.addEventListener = function() {
@@ -77,6 +87,8 @@
         __EventTarget__addEventListener.apply(this, [event_type, ...other_args]);
       }
     }
+
+    return this;
   };
 })(EventTarget.prototype.addEventListener);
 
@@ -85,7 +97,10 @@
    * @function removeEventListener
    * @override
    * 
-   * @description Allows removing the same event listener from a single event target for multiple event types at once. Overrides {@link https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/removeEventListener|EventTarget.removeEventListener}.
+   * @description
+   * - allows removing the same listener for multiple event types in a single call
+   * - allows chaining multiple calls
+   * - *overrides {@link https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/removeEventListener|EventTarget.removeEventListener}*
    * 
    * @param {...string} type One or more strings representing the event types to remove the listener for.
    * @param {function} listener
@@ -100,6 +115,14 @@
    * 
    * @example
    * xhr.removeEventListener('error', 'abort', interruption_handler);
+   *
+   * @example
+   * input_element
+   *   .removeEventListener('keyup', keyup_handler)
+   *   .removeEventListener('keydown', keydown_handler)
+   *   .blur();
+   *
+   * @returns {EventTarget}
    */
 
   EventTarget.prototype.removeEventListener = function() {
@@ -115,5 +138,7 @@
         __EventTarget__removeEventListener.apply(this, [event_type, ...other_args]);
       }
     }
+
+    return this;
   };
 })(EventTarget.prototype.removeEventListener);

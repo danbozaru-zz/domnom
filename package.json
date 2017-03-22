@@ -1,6 +1,6 @@
 {
   "name": "domnom",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A limited collection of JavaScript DOM prototype extensions.",
   "author": "ohdeerdog",
   "license": "SEE LICENSE IN LICENSE file",

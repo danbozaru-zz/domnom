@@ -28,8 +28,10 @@ npm run build
 
 <a name="addEventListener"></a>
 
-## addEventListener(...type, listener, [options], [useCapture])
-Allows adding the same event listener to a single event target for multiple event types at once. Overrides [EventTarget.addEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener).
+## addEventListener(...type, listener, [options], [useCapture]) ⇒ <code>EventTarget</code>
+- allows adding the same listener for multiple event types in a single call
+- allows chaining multiple calls
+- *overrides [EventTarget.addEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener)*
 
 
 | Param | Type | Description |
@@ -48,10 +50,17 @@ element.addEventListener('keyup', 'keydown', keypress_handler);
 ```js
 xhr.addEventListener('error', 'abort', interruption_handler);
 ```
+```js
+element
+  .addEventListener('keyup', keyup_handler)
+  .addEventListener('keydown', keydown_handler);
+```
 <a name="removeEventListener"></a>
 
-## removeEventListener(...type, listener, [options], [useCapture])
-Allows removing the same event listener from a single event target for multiple event types at once. Overrides [EventTarget.removeEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/removeEventListener).
+## removeEventListener(...type, listener, [options], [useCapture]) ⇒ <code>EventTarget</code>
+- allows removing the same listener for multiple event types in a single call
+- allows chaining multiple calls
+- *overrides [EventTarget.removeEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/removeEventListener)*
 
 
 | Param | Type | Description |
@@ -69,6 +78,12 @@ element.removeEventListener('keyup', 'keydown', keypress_handler);
 ```
 ```js
 xhr.removeEventListener('error', 'abort', interruption_handler);
+```
+```js
+input_element
+  .removeEventListener('keyup', keyup_handler)
+  .removeEventListener('keydown', keydown_handler)
+  .blur();
 ```
 <a name="event_activeelementchange"></a>
 
