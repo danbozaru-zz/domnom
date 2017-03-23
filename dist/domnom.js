@@ -1,5 +1,5 @@
 /*
- * domnom 0.2.0
+ * domnom 0.2.1
  * A limited collection of JavaScript DOM prototype extensions.
  * https://github.com/ohdeerdog/domnom
  * https://npmjs.com/package/domnom
